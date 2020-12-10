@@ -1,0 +1,33 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/gh/Kosala167/kbSimpleArray/simple-array.min.js"></script>
+    <script>
+    //first make object using your array //here it is [1, 2, 3, 5, 7]
+
+    let x = new ArrayReader([1, 2, 3, 5, 7]);
+
+    //then you can use methods like 'x.readArray(callback)' , 'x.arrMap(callback)' , 'x.filteredArray(callback)'
+    //call back function like function testFunction(index,value){console.log("index is:"+index+" and value is : "+value);}
+
+    x.readArray((index, value) => document.write(`${index}:${value}:${(value%2===0)?'even':'odd'}<br>`));
+    document.write('<br>');
+
+    let newArray = x.arrMap((index, value) => {
+        return value * index
+    }); //arrMap make new array from your callback function
+    new ArrayReader(newArray).readArray((index, value) => document.write(`${index}:${value}<br>`));
+    document.write('<br>');
+
+    let filteredArray = x.arrFilter((index, value) => {
+        return value > 5 || value < 2
+    }); //filteredArray make new array from your callback functions condition
+    new ArrayReader(filteredArray).readArray((index, value) => document.write(`${index}:${value}<br>`));
+    document.write('<br>');
+    </script>
+</body>
+
+</html>
